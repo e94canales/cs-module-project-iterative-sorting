@@ -2,16 +2,24 @@
 def selection_sort(arr):
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
-
+        # sets a boundary to keep track of where we're at, starts with 0
+        boundary = i
+        
+        # initialize the smallest values as the current boundary
+        smallest_value = arr[boundary]
+        smallest_index = boundary
+  
+        # iterates through the unsorted "right" side of the array, starting with boundary
+        for e in range(boundary, len(arr)): 
+            if arr[e] < smallest_value:
+                # sets the new smallest value
+                smallest_value = arr[e]
+                # sets the new smallest index
+                smallest_index = e
+                
+        # swap the two indexes in the array
+        arr[boundary], arr[smallest_index] = arr[smallest_index], arr[boundary]
+        
     return arr
 
 
@@ -19,7 +27,12 @@ def selection_sort(arr):
 def bubble_sort(arr):
     # Your code here
 
-
+    for i in range(len(arr) - 1):
+        # iterate and check to see if index(x) is greater than index(x + 1)
+        for e in range(len(arr) - 1):
+            if arr[e] > arr[e + 1]:
+                # if it is greater. switch the numbers so that the smallest is on the left
+                arr[e], arr[e + 1] = arr[e + 1], arr[e]
     return arr
 
 '''
